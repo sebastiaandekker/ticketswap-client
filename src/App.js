@@ -1,12 +1,16 @@
 import React from "react";
-import Header from "./components/Header";
+import { Provider } from "react-redux";
+import store from "./store";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Header from "./components/Header";
 
-export default function MyApp() {
+export default function App() {
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <Header></Header>
-    </React.Fragment>
+    <Provider store={store}>
+      <React.Fragment>
+        <CssBaseline />
+        <Header></Header>
+      </React.Fragment>
+    </Provider>
   );
 }
