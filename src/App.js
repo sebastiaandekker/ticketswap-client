@@ -1,12 +1,14 @@
 import React from "react";
-import "./App.css";
+import Header from "./components/Header";
 
-function App() {
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+export default function MyApp() {
   return (
-    <div>
-      <h1>Clean App</h1>
-    </div>
+    <React.Fragment>
+      <CssBaseline />
+      {/* The rest of your application */}
+      <Header></Header>
+    </React.Fragment>
   );
 }
-
-export default App;
