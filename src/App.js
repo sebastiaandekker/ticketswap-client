@@ -4,6 +4,7 @@ import store from "./store";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Header from "./components/Header";
 import SignupFormContainer from "./components/SignupFormContainer";
+import LoginFormContainer from "./components/LoginFormContainer";
 import { Route } from "react-router";
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
       <React.Fragment>
         <CssBaseline />
         <Header></Header>
+        <Route path="/login" component={LoginFormContainer} />
         <Route path="/signup" component={SignupFormContainer} />
       </React.Fragment>
     </Provider>

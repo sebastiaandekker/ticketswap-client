@@ -18,3 +18,20 @@ export const signup = (name, email, password) => dispatch => {
     })
     .catch(console.error);
 };
+
+function loginJWT(payload) {
+  return {
+    type: "JWT",
+    payload
+  };
+}
+
+export const login = (email, password) => dispatch => {
+  request
+    .post(`${baseUrl}/login`)
+    .send({ email: email, password: password })
+    .then(response => {
+      dispatch(loginJWT(response.body));
+    })
+    .catch(console.error);
+};
