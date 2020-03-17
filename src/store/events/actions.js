@@ -29,9 +29,11 @@ function addEvent(payload) {
 }
 
 export const createEvent = event => (dispatch, getState) => {
+  const state = getState();
+  const { user } = state;
   request
     .post(`${baseUrl}/event`)
-    // .set("Authorization", `Bearer ${user.jwt}`)
+    .set("Authorization", `Bearer ${user.jwt}`)
     .send(event)
     .then(response => {
       dispatch(addEvent(response.body));
