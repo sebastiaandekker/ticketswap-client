@@ -17,7 +17,7 @@ class EventDetailsContainer extends React.Component {
       return (
         <div>
           <EventDetails event={this.props.event} />
-          <TicketListContainer tickets={this.props.event.tickets} />
+          <TicketListContainer />
         </div>
       );
     }
