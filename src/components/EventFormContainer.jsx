@@ -1,5 +1,5 @@
 import React from "react";
-// import EventForm from "./EventForm";
+import EventForm from "./EventForm";
 import { connect } from "react-redux";
 // import { createEvent } from "../store/event/actions";
 
@@ -25,14 +25,11 @@ class EventFormContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>EventFormContainer</h1>
-      </div>
-      // <EventForm
-      //   onSubmit={this.onSubmit}
-      //   onChange={this.onChange}
-      //   values={this.state}
-      // />
+      <EventForm
+        onSubmit={this.onSubmit}
+        onChange={this.onChange}
+        values={this.state}
+      />
     );
   }
 }
