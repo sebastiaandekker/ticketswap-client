@@ -20,7 +20,7 @@ class SignupFormContainer extends React.Component {
 
   render() {
     if (this.props.user) {
-      return <Redirect to="/events" />;
+      return <Redirect to="/event" />;
     }
     return (
       <SignupForm

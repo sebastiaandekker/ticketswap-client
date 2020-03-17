@@ -5,6 +5,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Header from "./components/Header";
 import SignupFormContainer from "./components/SignupFormContainer";
 import LoginFormContainer from "./components/LoginFormContainer";
+import EventListContainer from "./components/EventListContainer";
+import EventDetailsContainer from "./components/EventDetailsContainer";
 import { Route } from "react-router";
 
 export default function App() {
@@ -15,6 +17,8 @@ export default function App() {
         <Header></Header>
         <Route path="/login" component={LoginFormContainer} />
         <Route path="/signup" component={SignupFormContainer} />
+        <Route exact path="/event" component={EventListContainer} />
+        <Route path="/event/:eventId" component={EventDetailsContainer} />
       </React.Fragment>
     </Provider>
   );
