@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-// import { getEvents } from "../actions";
+import { getEvents } from "../store/events/actions";
 import EventList from "./EventList";
 
 class EventListContainer extends React.Component {
   componentDidMount() {
-    // this.props.getEvents();
+    this.props.getEvents();
   }
 
   render() {
@@ -20,8 +20,8 @@ class EventListContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    // events: state.events
+    events: state.events
   };
 };
 
-export default connect(mapStateToProps)(EventListContainer);
+export default connect(mapStateToProps, { getEvents })(EventListContainer);
