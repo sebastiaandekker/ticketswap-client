@@ -10,18 +10,27 @@ class EventListContainer extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <EventList events={this.props.events} />
-        <EventFormContainer />
-      </div>
-    );
+    if (!this.props.user) {
+      return (
+        <div>
+          <EventList events={this.props.events} />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <EventList events={this.props.events} />
+          <EventFormContainer />
+        </div>
+      );
+    }
   }
 }
 
 const mapStateToProps = state => {
   return {
-    events: state.events
+    events: state.events,
+    user: state.user
   };
 };
 
