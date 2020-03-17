@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getEvent } from "../store/event/actions";
 import { getTicket } from "../store/ticket/actions";
-// import TicketDetails from "./EventDetails";
+import TicketDetails from "./TicketDetails";
 // // import CommentListContainer from "./CommentListContainer";
 
 class TicketDetailsContainer extends React.Component {
@@ -19,8 +19,7 @@ class TicketDetailsContainer extends React.Component {
     } else {
       return (
         <div>
-          <h1>TicketDetailsContainer</h1>
-          {/* <TicketDetails event={this.props.event} /> */}
+          <TicketDetails ticket={this.props.ticket} />
           {/* <CommentListContainer /> */}
         </div>
       );
@@ -31,7 +30,8 @@ class TicketDetailsContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     event: state.event,
-    user: state.user
+    user: state.user,
+    ticket: state.ticket
   };
 };
 
