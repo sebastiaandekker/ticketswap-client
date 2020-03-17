@@ -1,5 +1,5 @@
 import React from "react";
-// import TicketForm from "./TicketForm";
+import TicketForm from "./TicketForm";
 import { connect } from "react-redux";
 // import { createTicket } from "../store/events/actions";
 
@@ -28,14 +28,11 @@ class TicketFormContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>TicketForm Container</h1>
-      </div>
-      // <TicketForm
-      //   onSubmit={this.onSubmit}
-      //   onChange={this.onChange}
-      //   values={this.state}
-      // />
+      <TicketForm
+        onSubmit={this.onSubmit}
+        onChange={this.onChange}
+        values={this.state}
+      />
     );
   }
 }

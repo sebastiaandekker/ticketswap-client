@@ -7,8 +7,14 @@ class TicketListContainer extends React.Component {
   render() {
     if (!this.props.event) {
       return <div>Loading Event</div>;
+    } else if (!this.props.user) {
+      return (
+        <TicketList
+          tickets={this.props.event.tickets}
+          event={this.props.event}
+        />
+      );
     } else {
-      console.log("tickets", this.props.event.tickets);
       return (
         <div>
           <TicketList
