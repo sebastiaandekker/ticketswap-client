@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 // import { getEvents } from "../actions";
-// import EventList from "./EventList";
+import EventList from "./EventList";
 
 class EventListContainer extends React.Component {
   componentDidMount() {
@@ -11,7 +11,7 @@ class EventListContainer extends React.Component {
   render() {
     return (
       <div>
-        <h1>EventListContainer</h1>
+        <EventList />
         {/* <EventList events={this.props.events} /> */}
       </div>
     );
