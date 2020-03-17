@@ -14,15 +14,13 @@ class EventDetailsContainer extends React.Component {
     if (!this.props.user) {
       return (
         <div>
-          <EventDetails />
-          {/* <EventDetails events={this.props.events} /> */}
+          <EventDetails event={this.props.event} />
         </div>
       );
     } else {
       return (
         <div>
-          <EventDetails />
-          {/* <EventDetails events={this.props.events} /> */}
+          <EventDetails event={this.props.event} />
           {/* <TicketListContainer /> */}
         </div>
       );
