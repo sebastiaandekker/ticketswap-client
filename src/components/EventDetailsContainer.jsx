@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-// // import { getEvent } from "../store/event/actions";
+import { getEvent } from "../store/event/actions";
 import EventDetails from "./EventDetails";
 // // import TicketListContainer from "./TicketListContainer";
 
 class EventDetailsContainer extends React.Component {
   componentDidMount() {
-    // this.props.getEvent();
+    const eventId = this.props.match.params.eventId;
+    this.props.getEvent(eventId);
   }
 
   render() {
@@ -31,10 +32,10 @@ class EventDetailsContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    // events: state.events,
+    event: state.event,
     user: state.user
   };
 };
 
-export default connect(mapStateToProps)(EventDetailsContainer);
-// export default connect(mapStateToProps, { getEvents })(EventDetailsContainer);
+export default connect(mapStateToProps, { getEvent })(EventDetailsContainer);
+// export default connect(mapStateToProps, { getEvent })(EventDetailsContainer);
