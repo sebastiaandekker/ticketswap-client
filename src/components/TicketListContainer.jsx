@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import TicketList from "./TicketList";
-// import TicketFormContainer from "./TicketFormContainer";
+import TicketFormContainer from "./TicketFormContainer";
 
 class TicketListContainer extends React.Component {
   render() {
@@ -11,11 +11,11 @@ class TicketListContainer extends React.Component {
       console.log("tickets", this.props.event.tickets);
       return (
         <div>
-          <h1>TicketListContainer</h1>
           <TicketList
             tickets={this.props.event.tickets}
             event={this.props.event}
           />
+          <TicketFormContainer />
         </div>
       );
     }
