@@ -1,7 +1,7 @@
 import React from "react";
-// import SignupForm from "./SignupForm";
+import LoginForm from "./LoginForm";
 import { connect } from "react-redux";
-import { signup } from "../store/user/actions";
+import { login } from "../store/user/actions";
 import { Redirect } from "react-router-dom";
 
 class LoginFormContainer extends React.Component {
@@ -9,7 +9,7 @@ class LoginFormContainer extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.signup(this.state.email, this.state.password);
+    this.props.login(this.state.email, this.state.password);
   };
 
   onChange = event => {
@@ -23,14 +23,11 @@ class LoginFormContainer extends React.Component {
       return <Redirect to="/events" />;
     }
     return (
-      <div>
-        <h1>Login</h1>
-      </div>
-      // <SignupForm
-      //   onSubmit={this.onSubmit}
-      //   onChange={this.onChange}
-      //   values={this.state}
-      // />
+      <LoginForm
+        onSubmit={this.onSubmit}
+        onChange={this.onChange}
+        values={this.state}
+      />
     );
   }
 }
@@ -41,4 +38,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { signup })(LoginFormContainer);
+export default connect(mapStateToProps, { login })(LoginFormContainer);
