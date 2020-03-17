@@ -1,14 +1,15 @@
 import React from "react";
-import { connect } from "react-redux";
 import SignupForm from "./SignupForm";
-// import { login } from "../actions";
+import { connect } from "react-redux";
+import { signup } from "../store/user/actions";
+import { Redirect } from "react-router-dom";
 
 class SignupFormContainer extends React.Component {
   state = { name: "", email: "", password: "" };
 
   onSubmit = event => {
     event.preventDefault();
-    // this.props.login(this.state.email, this.state.password);
+    this.props.signup(this.state.name, this.state.email, this.state.password);
   };
 
   onChange = event => {
@@ -18,6 +19,9 @@ class SignupFormContainer extends React.Component {
   };
 
   render() {
+    if (this.props.user) {
+      return <Redirect to="/events" />;
+    }
     return (
       <SignupForm
         onSubmit={this.onSubmit}
@@ -27,4 +31,11 @@ class SignupFormContainer extends React.Component {
     );
   }
 }
-export default connect(null)(SignupFormContainer);
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+export default connect(mapStateToProps, { signup })(SignupFormContainer);

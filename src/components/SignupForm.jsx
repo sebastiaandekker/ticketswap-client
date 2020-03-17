@@ -32,7 +32,7 @@ export default class SignupForm extends React.Component {
             <TextField
               required
               id="standard-basic"
-              label="Email"
+              label="Password"
               name="password"
               onChange={this.props.onChange}
               value={this.props.values.password}
