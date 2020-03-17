@@ -20,3 +20,21 @@ export const getEvents = () => (dispatch, getState) => {
       .catch(console.error);
   }
 };
+
+function addEvent(payload) {
+  return {
+    type: "ADD_EVENT",
+    payload
+  };
+}
+
+export const createEvent = event => (dispatch, getState) => {
+  request
+    .post(`${baseUrl}/event`)
+    // .set("Authorization", `Bearer ${user.jwt}`)
+    .send(event)
+    .then(response => {
+      dispatch(addEvent(response.body));
+    })
+    .catch(console.error);
+};

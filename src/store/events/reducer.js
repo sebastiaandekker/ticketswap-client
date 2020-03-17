@@ -3,6 +3,9 @@ export default function(state = [], action) {
     case "ALL_EVENTS": {
       return (state = action.payload);
     }
+    case "ADD_EVENT": {
+      return [...state, action.payload];
+    }
     default:
       return state;
   }

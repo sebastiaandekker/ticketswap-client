@@ -67,7 +67,7 @@ export default class EventForm extends React.Component {
 
           <Grid item>
             <Button variant="contained" color="primary" type="submit">
-              Login
+              Add Event
             </Button>
           </Grid>
         </form>

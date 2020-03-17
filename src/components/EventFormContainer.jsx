@@ -1,7 +1,7 @@
 import React from "react";
 import EventForm from "./EventForm";
 import { connect } from "react-redux";
-// import { createEvent } from "../store/event/actions";
+import { createEvent } from "../store/events/actions";
 
 class EventFormContainer extends React.Component {
   state = {
@@ -14,7 +14,14 @@ class EventFormContainer extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
-    // this.props.login(this.state.email, this.state.password);
+    this.props.createEvent(this.state);
+    this.setState({
+      name: "",
+      description: "",
+      picture: "",
+      startDate: "",
+      endDate: ""
+    });
   };
 
   onChange = event => {
@@ -36,9 +43,9 @@ class EventFormContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    // user: state.user
+    user: state.user
   };
 };
 
-// export default connect(mapStateToProps, { createEvent })(LoginFormContainer);
-export default connect(mapStateToProps)(EventFormContainer);
+export default connect(mapStateToProps, { createEvent })(EventFormContainer);
+// export default connect(mapStateToProps)(EventFormContainer);
