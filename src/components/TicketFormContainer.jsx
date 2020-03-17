@@ -1,7 +1,7 @@
 import React from "react";
 import TicketForm from "./TicketForm";
 import { connect } from "react-redux";
-// import { createTicket } from "../store/events/actions";
+import { createTicket } from "../store/event/actions";
 
 class TicketFormContainer extends React.Component {
   state = {
@@ -12,7 +12,8 @@ class TicketFormContainer extends React.Component {
 
   onSubmit = ticket => {
     ticket.preventDefault();
-    // this.props.createTicket(this.state);
+    const ticketData = { ...this.state, eventId: this.props.event.id };
+    this.props.createTicket(ticketData);
     this.setState({
       description: "",
       picture: "",
@@ -39,9 +40,9 @@ class TicketFormContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    event: state.event
   };
 };
 
-// export default connect(mapStateToProps, { createEvent })(EventFormContainer);
-export default connect(mapStateToProps)(TicketFormContainer);
+export default connect(mapStateToProps, { createTicket })(TicketFormContainer);
