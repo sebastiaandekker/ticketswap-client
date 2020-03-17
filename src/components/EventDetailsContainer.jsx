@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 // // import { getEvent } from "../store/event/actions";
-// // import EventDetails from "./EventDetails";
+import EventDetails from "./EventDetails";
 // // import TicketListContainer from "./TicketListContainer";
 
 class EventDetailsContainer extends React.Component {
@@ -13,14 +13,14 @@ class EventDetailsContainer extends React.Component {
     if (!this.props.user) {
       return (
         <div>
-          <h1>EventDetailsContainer</h1>
+          <EventDetails />
           {/* <EventDetails events={this.props.events} /> */}
         </div>
       );
     } else {
       return (
         <div>
-          <h1>EventDetailsContainer</h1>
+          <EventDetails />
           {/* <EventDetails events={this.props.events} /> */}
           {/* <TicketListContainer /> */}
         </div>
