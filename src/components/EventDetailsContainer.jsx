@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getEvent } from "../store/event/actions";
 import EventDetails from "./EventDetails";
-// // import TicketListContainer from "./TicketListContainer";
+import TicketListContainer from "./TicketListContainer";
 
 class EventDetailsContainer extends React.Component {
   componentDidMount() {
@@ -11,17 +11,13 @@ class EventDetailsContainer extends React.Component {
   }
 
   render() {
-    if (!this.props.user) {
-      return (
-        <div>
-          <EventDetails event={this.props.event} />
-        </div>
-      );
+    if (!this.props.event) {
+      return <div>Loading Event</div>;
     } else {
       return (
         <div>
           <EventDetails event={this.props.event} />
-          {/* <TicketListContainer /> */}
+          <TicketListContainer tickets={this.props.event.tickets} />
         </div>
       );
     }
@@ -36,4 +32,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, { getEvent })(EventDetailsContainer);
-// export default connect(mapStateToProps, { getEvent })(EventDetailsContainer);
