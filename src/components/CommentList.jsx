@@ -8,13 +8,20 @@ export default class CommentList extends React.Component {
   render() {
     const comments = this.props.comments;
 
-    return (
-      <Grid container justify="center">
+    let headerElement = null;
+    if (this.props.comments.length > 0) {
+      headerElement = (
         <Grid item xs={12}>
           <Typography variant="h3" align="center">
             Comments
           </Typography>
         </Grid>
+      );
+    }
+
+    return (
+      <Grid container justify="center">
+        {headerElement}
         {comments.map(comment => (
           <Grid item key={comment.id}>
             <Card>
