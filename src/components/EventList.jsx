@@ -24,10 +24,7 @@ export default class EventList extends React.Component {
           <Grid item key={event.id}>
             <Card>
               <CardHeader title={event.name} subheader={event.startDate} />
-              <CardMedia
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="Contemplative Reptile"
-              />
+              <CardMedia image={event.picture} title="Contemplative Reptile" />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {event.description}

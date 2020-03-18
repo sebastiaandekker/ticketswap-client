@@ -1,7 +1,10 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-// import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
 
 export default class EventDetails extends React.Component {
   render() {
@@ -14,12 +17,21 @@ export default class EventDetails extends React.Component {
         <Grid container justify="center">
           <Grid item xs={12}>
             <Typography variant="h3" align="center">
-              {event.name}
+              Event
             </Typography>
-            <img src={event.picture} alt="" />
-            <Typography>{event.description}</Typography>
-            <Typography>Start date: {event.startDate}</Typography>
-            <Typography>End date: {event.endDate}</Typography>
+          </Grid>
+          <Grid item>
+            <Card>
+              <CardHeader title={event.name} subheader={event.startDate} />
+              <CardMedia image={event.picture} title="Contemplative Reptile" />
+              <CardContent>
+                <Typography>Start date: {event.startDate}</Typography>
+                <Typography>End date: {event.endDate}</Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {event.description}
+                </Typography>
+              </CardContent>
+            </Card>
           </Grid>
         </Grid>
       );

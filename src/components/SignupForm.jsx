@@ -2,6 +2,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 export default class SignupForm extends React.Component {
   render() {
@@ -9,6 +10,7 @@ export default class SignupForm extends React.Component {
       <Grid container justify="center">
         <form onSubmit={this.props.onSubmit}>
           <Grid item>
+            <Typography variant="h3">Sign Up</Typography>
             <TextField
               required
               id="standard-basic"

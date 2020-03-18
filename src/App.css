@@ -1,0 +1,16 @@
+.MuiCardMedia-root {
+  height: 140px;
+}
+
+.MuiGrid-item {
+  padding: 10px;
+  max-width: 260px;
+}
+
+.MuiAppBar-colorPrimary a {
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
