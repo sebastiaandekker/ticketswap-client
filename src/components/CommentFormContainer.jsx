@@ -1,5 +1,5 @@
 import React from "react";
-// import CommentForm from "./CommentForm";
+import CommentForm from "./CommentForm";
 import { connect } from "react-redux";
 // import { createComment } from "../store/comment/actions";
 
@@ -24,12 +24,11 @@ class CommentFormContainer extends React.Component {
 
   render() {
     return (
-      <div>CommentFormContainer</div>
-      // <CommentForm
-      //   onSubmit={this.onSubmit}
-      //   onChange={this.onChange}
-      //   values={this.state}
-      // />
+      <CommentForm
+        onSubmit={this.onSubmit}
+        onChange={this.onChange}
+        values={this.state}
+      />
     );
   }
 }
