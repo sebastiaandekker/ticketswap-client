@@ -6,7 +6,8 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import IconButton from "@material-ui/core/IconButton";
+// import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";
 
 export default class TicketDetails extends React.Component {
@@ -18,9 +19,17 @@ export default class TicketDetails extends React.Component {
     if (this.props.editable) {
       editTicketElement = (
         <CardActions>
-          <IconButton color="primary" onClick={this.props.changeToEditMode}>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<EditIcon />}
+            onClick={this.props.changeToEditMode}
+          >
+            Edit Ticket
+          </Button>
+          {/* <IconButton color="primary" >
             <EditIcon />
-          </IconButton>
+          </IconButton> */}
         </CardActions>
       );
     }
