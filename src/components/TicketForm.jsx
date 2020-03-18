@@ -4,45 +4,52 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
-export default class SignupForm extends React.Component {
+export default class TicketForm extends React.Component {
   render() {
+    const text = this.props.createMode ? "Add Ticket" : "Update Ticket";
+
     return (
       <Grid container justify="center">
+        <Grid item xs={12}>
+          <Typography variant="h3" align="center">
+            {text}
+          </Typography>
+        </Grid>
         <form onSubmit={this.props.onSubmit}>
           <Grid item>
-            <Typography variant="h3">Sign Up</Typography>
             <TextField
               required
               id="standard-basic"
-              label="Name"
-              name="name"
+              label="Price"
+              name="price"
               onChange={this.props.onChange}
-              value={this.props.values.name}
+              value={this.props.values.price}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              id="standard-multiline-static"
+              label="Description"
+              name="description"
+              multiline
+              rows="4"
+              onChange={this.props.onChange}
+              value={this.props.values.description}
             />
           </Grid>
           <Grid item>
             <TextField
               required
               id="standard-basic"
-              label="Email"
-              name="email"
+              label="Picture"
+              name="picture"
               onChange={this.props.onChange}
-              value={this.props.values.email}
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              required
-              id="standard-basic"
-              label="Password"
-              name="password"
-              onChange={this.props.onChange}
-              value={this.props.values.password}
+              value={this.props.values.picture}
             />
           </Grid>
           <Grid item>
             <Button variant="contained" color="primary" type="submit">
-              Login
+              {text}
             </Button>
           </Grid>
         </form>

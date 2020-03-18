@@ -1,0 +1,26 @@
+.MuiCardMedia-root {
+  height: 140px;
+}
+
+.MuiGrid-item {
+  padding: 10px;
+  max-width: 260px;
+}
+
+.MuiAppBar-colorPrimary a {
+  color: #fff;
+}
+
+/* .MuiIconButton-root { */
+
+a {
+  text-decoration: none;
+}
+
+.ticket .MuiCardActions-root {
+  justify-content: space-between;
+}
+
+.mb-10 {
+  margin-bottom: 10px !important;
+}
