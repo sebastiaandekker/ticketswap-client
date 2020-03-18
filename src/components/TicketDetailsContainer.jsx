@@ -19,7 +19,7 @@ class TicketDetailsContainer extends React.Component {
     } else {
       return (
         <div>
-          <TicketDetails ticket={this.props.ticket} />
+          <TicketDetails ticket={this.props.ticket} event={this.props.event} />
           {/* <CommentListContainer /> */}
         </div>
       );

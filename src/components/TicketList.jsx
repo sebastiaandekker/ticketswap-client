@@ -25,6 +25,9 @@ export default class TicketList extends React.Component {
             <Card>
               <CardMedia image={ticket.picture} title="Awesome" />
               <CardContent>
+                <Typography color="textSecondary" gutterBottom>
+                  {ticket.author}
+                </Typography>
                 <Typography variant="h5" className="mb-10">
                   € {ticket.price}
                 </Typography>

@@ -11,8 +11,14 @@
   color: #fff;
 }
 
+/* .MuiIconButton-root { */
+
 a {
   text-decoration: none;
+}
+
+.ticket .MuiCardActions-root {
+  justify-content: space-between;
 }
 
 .mb-10 {
