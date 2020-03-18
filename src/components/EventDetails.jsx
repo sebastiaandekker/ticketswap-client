@@ -22,11 +22,16 @@ export default class EventDetails extends React.Component {
           </Grid>
           <Grid item>
             <Card>
-              <CardHeader title={event.name} subheader={event.startDate} />
+              <CardHeader title={event.name} />
               <CardMedia image={event.picture} title="Contemplative Reptile" />
               <CardContent>
-                <Typography>Start date: {event.startDate}</Typography>
-                <Typography>End date: {event.endDate}</Typography>
+                <Typography
+                  varian="p"
+                  // color="textSecondary"
+                  className="mb-10"
+                >
+                  {event.startDate} - {event.endDate}
+                </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {event.description}
                 </Typography>
