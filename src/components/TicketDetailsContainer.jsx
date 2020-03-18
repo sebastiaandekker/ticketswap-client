@@ -4,7 +4,7 @@ import { getEvent } from "../store/event/actions";
 import { getTicket } from "../store/ticket/actions";
 import TicketDetails from "./TicketDetails";
 import TicketFormContainer from "./TicketFormContainer";
-// // import CommentListContainer from "./CommentListContainer";
+import CommentListContainer from "./CommentListContainer";
 
 class TicketDetailsContainer extends React.Component {
   state = {
@@ -35,7 +35,7 @@ class TicketDetailsContainer extends React.Component {
             editable={false}
             changeToEditMode={this.changeToEditMode}
           />
-          {/* <CommentListContainer /> */}
+          <CommentListContainer />
         </div>
       );
     } else if (!this.state.editMode) {
@@ -47,7 +47,7 @@ class TicketDetailsContainer extends React.Component {
             editable={true}
             changeToEditMode={this.changeToEditMode}
           />
-          {/* <CommentListContainer /> */}
+          <CommentListContainer />
         </div>
       );
     } else {
@@ -60,7 +60,7 @@ class TicketDetailsContainer extends React.Component {
             changeToEditMode={this.changeToEditMode}
           />
           <TicketFormContainer ticketId={this.props.ticket.id} />
-          {/* <CommentListContainer /> */}
+          <CommentListContainer />
         </div>
       );
     }
