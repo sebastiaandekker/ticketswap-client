@@ -5,6 +5,9 @@ export default function ticketReducer(state = initialState, action) {
     case "TICKET_FETCHED": {
       return (state = action.payload);
     }
+    case "TICKET_UPDATED": {
+      return (state = action.payload);
+    }
     default: {
       return state;
     }

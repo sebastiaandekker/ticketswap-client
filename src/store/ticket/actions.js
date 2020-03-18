@@ -16,3 +16,23 @@ export const getTicket = id => (dispatch, getState) => {
     })
     .catch(console.error);
 };
+
+function ticketUpdated(payload) {
+  return {
+    type: "TICKET_UPDATED",
+    payload
+  };
+}
+
+export const updateTicket = ticket => (dispatch, getState) => {
+  const state = getState();
+  const { user } = state;
+  request
+    .put(`${baseUrl}/ticket/${ticket.id}`)
+    .set("Authorization", `Bearer ${user.jwt}`)
+    .send(ticket)
+    .then(response => {
+      dispatch(ticketUpdated(response.body));
+    })
+    .catch(console.error);
+};

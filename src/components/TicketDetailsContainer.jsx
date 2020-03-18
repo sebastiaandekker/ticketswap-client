@@ -59,7 +59,7 @@ class TicketDetailsContainer extends React.Component {
             editable={true}
             changeToEditMode={this.changeToEditMode}
           />
-          <TicketFormContainer />
+          <TicketFormContainer ticketId={this.props.ticket.id} />
           {/* <CommentListContainer /> */}
         </div>
       );

@@ -27,9 +27,6 @@ export default class TicketDetails extends React.Component {
           >
             Edit Ticket
           </Button>
-          {/* <IconButton color="primary" >
-            <EditIcon />
-          </IconButton> */}
         </CardActions>
       );
     }
