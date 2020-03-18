@@ -14,6 +14,17 @@ export default class TicketDetails extends React.Component {
     const ticket = this.props.ticket;
     const event = this.props.event;
 
+    let editTicketElement = null;
+    if (this.props.editable) {
+      editTicketElement = (
+        <CardActions>
+          <IconButton color="primary" onClick={this.props.changeToEditMode}>
+            <EditIcon />
+          </IconButton>
+        </CardActions>
+      );
+    }
+
     if (!ticket || !event) {
       return <div>Loading</div>;
     } else {
@@ -39,11 +50,7 @@ export default class TicketDetails extends React.Component {
                   {ticket.description}
                 </Typography>
               </CardContent>
-              <CardActions>
-                <IconButton color="primary">
-                  <EditIcon />
-                </IconButton>
-              </CardActions>
+              {editTicketElement}
             </Card>
           </Grid>
         </Grid>
