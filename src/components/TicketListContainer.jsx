@@ -21,7 +21,7 @@ class TicketListContainer extends React.Component {
             tickets={this.props.event.tickets}
             event={this.props.event}
           />
-          <TicketFormContainer />
+          <TicketFormContainer createMode={true} />
         </div>
       );
     }

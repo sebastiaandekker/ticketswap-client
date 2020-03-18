@@ -3,54 +3,63 @@ import { connect } from "react-redux";
 import { getEvent } from "../store/event/actions";
 import { getTicket } from "../store/ticket/actions";
 import TicketDetails from "./TicketDetails";
+import TicketFormContainer from "./TicketFormContainer";
 // // import CommentListContainer from "./CommentListContainer";
 
 class TicketDetailsContainer extends React.Component {
   state = {
-    editable: false,
     editMode: false
   };
 
-  checkUserIsAuthor = (user, ticket) => {
-    if (!user) {
-      return;
-    } else {
-      const ticketAuthor = ticket.author.toLowerCase();
-
-      if (user.name === ticketAuthor) {
-        this.setState({ ...this.state, editable: true });
-      }
-    }
-  };
+  componentDidMount() {
+    this.props.getTicket(this.props.match.params.ticketId);
+    this.props.getEvent(this.props.match.params.eventId);
+  }
 
   changeToEditMode = () => {
-    console.log("changeToEditMode");
-
     this.setState({ ...this.state, editMode: true });
   };
 
-  componentDidMount() {
-    const eventId = this.props.match.params.eventId;
-    const ticketId = this.props.match.params.ticketId;
-
-    this.props.getEvent(eventId);
-    this.props.getTicket(ticketId);
-
-    this.checkUserIsAuthor(this.props.user, this.props.ticket);
-  }
-
   render() {
-    if (!this.props.event) {
-      return <div>Loading Event</div>;
+    if (!this.props.ticket) {
+      return <div>Loading</div>;
+    } else if (
+      !this.props.user ||
+      this.props.user.name !== this.props.ticket.author.toLowerCase()
+    ) {
+      return (
+        <div>
+          <TicketDetails
+            ticket={this.props.ticket}
+            event={this.props.event}
+            editable={false}
+            changeToEditMode={this.changeToEditMode}
+          />
+          {/* <CommentListContainer /> */}
+        </div>
+      );
+    } else if (!this.state.editMode) {
+      return (
+        <div>
+          <TicketDetails
+            ticket={this.props.ticket}
+            event={this.props.event}
+            editable={true}
+            changeToEditMode={this.changeToEditMode}
+          />
+          {/* <CommentListContainer /> */}
+        </div>
+      );
     } else {
       return (
         <div>
           <TicketDetails
             ticket={this.props.ticket}
             event={this.props.event}
-            editable={this.state.editable}
+            editable={true}
             changeToEditMode={this.changeToEditMode}
           />
+          <TicketFormContainer />
           {/* <CommentListContainer /> */}
         </div>
       );

@@ -2,13 +2,22 @@ import React from "react";
 import TicketForm from "./TicketForm";
 import { connect } from "react-redux";
 import { createTicket } from "../store/event/actions";
+// import { updateTicket } from "../store/event/actions";
 
 class TicketFormContainer extends React.Component {
   state = {
     description: "",
     picture: "",
-    price: ""
+    price: "",
+    createMode: false
   };
+
+  componentDidMount() {
+    if (this.props.createMode) {
+      console.log("createMode container");
+      this.setState({ ...this.state, createMode: true });
+    }
+  }
 
   onSubmit = ticket => {
     ticket.preventDefault();
@@ -33,6 +42,8 @@ class TicketFormContainer extends React.Component {
         onSubmit={this.onSubmit}
         onChange={this.onChange}
         values={this.state}
+        createMode={this.state.createMode}
+        updateMode={this.state.updateMode}
       />
     );
   }

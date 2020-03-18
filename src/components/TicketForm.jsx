@@ -6,11 +6,13 @@ import Typography from "@material-ui/core/Typography";
 
 export default class TicketForm extends React.Component {
   render() {
+    const text = this.props.createMode ? "Add Ticket" : "Update Ticket";
+
     return (
       <Grid container justify="center">
         <Grid item xs={12}>
           <Typography variant="h3" align="center">
-            Add Ticket
+            {text}
           </Typography>
         </Grid>
         <form onSubmit={this.props.onSubmit}>
@@ -47,7 +49,7 @@ export default class TicketForm extends React.Component {
           </Grid>
           <Grid item>
             <Button variant="contained" color="primary" type="submit">
-              Add Ticket
+              {text}
             </Button>
           </Grid>
         </form>
