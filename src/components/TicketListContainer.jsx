@@ -5,22 +5,17 @@ import TicketFormContainer from "./TicketFormContainer";
 
 class TicketListContainer extends React.Component {
   render() {
+    const ticketsByPrice = this.props.event.tickets.sort(
+      (a, b) => b.price - a.price
+    );
     if (!this.props.event) {
       return <div>Loading Event</div>;
     } else if (!this.props.user) {
-      return (
-        <TicketList
-          tickets={this.props.event.tickets}
-          event={this.props.event}
-        />
-      );
+      return <TicketList tickets={ticketsByPrice} event={this.props.event} />;
     } else {
       return (
         <div>
-          <TicketList
-            tickets={this.props.event.tickets}
-            event={this.props.event}
-          />
+          <TicketList tickets={ticketsByPrice} event={this.props.event} />
           <TicketFormContainer createMode={true} />
         </div>
       );
