@@ -53,7 +53,18 @@ export default class TicketDetails extends React.Component {
                   € {ticket.price}
                 </Typography>
                 <Typography gutterBottom>
-                  Fraud risk: {this.props.fraudRisk}%
+                  Risk:{" "}
+                  <span
+                    className={
+                      this.props.fraudRisk < 25
+                        ? "green"
+                        : this.props.fraudRisk < 50
+                        ? "yellow"
+                        : "red"
+                    }
+                  >
+                    {this.props.fraudRisk}%
+                  </span>
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {ticket.description}
