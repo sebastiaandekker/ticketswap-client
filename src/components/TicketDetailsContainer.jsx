@@ -73,12 +73,10 @@ class TicketDetailsContainer extends React.Component {
 
     const calculateFraudRisk = () => {
       console.log("averagePrice", calculateAveragePrice());
-
       console.log("authorRisk", calculateAuthorRisk());
       console.log("priceRisk", calculatePriceRisk());
       console.log("commentRisk", calculateCommentRisk());
       console.log("timeRisk", calculateTimeRisk());
-
       let riskTotal =
         calculateAuthorRisk() +
         calculatePriceRisk() +
@@ -90,6 +88,7 @@ class TicketDetailsContainer extends React.Component {
     };
 
     console.log("fraudRisk", calculateFraudRisk());
+    return calculateFraudRisk();
   };
 
   render() {
@@ -101,7 +100,6 @@ class TicketDetailsContainer extends React.Component {
       !this.props.user ||
       this.props.user.name !== this.props.ticket.author.toLowerCase()
     ) {
-      this.fraudRiskCalculation();
       return (
         <div>
           <TicketDetails
@@ -109,6 +107,7 @@ class TicketDetailsContainer extends React.Component {
             event={this.props.event}
             editable={false}
             changeToEditMode={this.changeToEditMode}
+            fraudRisk={this.fraudRiskCalculation()}
           />
           <CommentListContainer />
         </div>
@@ -121,6 +120,7 @@ class TicketDetailsContainer extends React.Component {
             event={this.props.event}
             editable={true}
             changeToEditMode={this.changeToEditMode}
+            fraudRisk={this.fraudRiskCalculation()}
           />
           <CommentListContainer />
         </div>
@@ -133,6 +133,7 @@ class TicketDetailsContainer extends React.Component {
             event={this.props.event}
             editable={true}
             changeToEditMode={this.changeToEditMode}
+            fraudRisk={this.fraudRiskCalculation()}
           />
           <TicketFormContainer ticketId={this.props.ticket.id} />
           <CommentListContainer />
