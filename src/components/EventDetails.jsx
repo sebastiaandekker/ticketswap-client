@@ -10,9 +10,22 @@ export default class EventDetails extends React.Component {
   render() {
     const event = this.props.event;
 
+    const dateConverter = date => {
+      const dateObject = new Date(date);
+      const dateString =
+        dateObject.getDate() +
+        "-" +
+        (dateObject.getMonth() + 1) +
+        "-" +
+        dateObject.getFullYear();
+      return dateString;
+    };
+
     if (!event) {
       return <div>Loading</div>;
     } else {
+      const startDate = dateConverter(event.startDate);
+      const endDate = dateConverter(event.endDate);
       return (
         <Grid container justify="center">
           <Grid item xs={12}>
@@ -30,7 +43,7 @@ export default class EventDetails extends React.Component {
                   // color="textSecondary"
                   className="mb-10"
                 >
-                  {event.startDate} - {event.endDate}
+                  {startDate} - {endDate}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {event.description}

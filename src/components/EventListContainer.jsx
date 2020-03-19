@@ -10,16 +10,19 @@ class EventListContainer extends React.Component {
   }
 
   render() {
+    const eventsFiltered = this.props.events
+      .filter(event => new Date() < new Date(event.startDate))
+      .sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
     if (!this.props.user) {
       return (
         <div>
-          <EventList events={this.props.events} />
+          <EventList events={eventsFiltered} />
         </div>
       );
     } else {
       return (
         <div>
-          <EventList events={this.props.events} />
+          <EventList events={eventsFiltered} />
           <EventFormContainer />
         </div>
       );
