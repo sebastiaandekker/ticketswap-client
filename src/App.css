@@ -24,3 +24,14 @@ a {
 .mb-10 {
   margin-bottom: 10px !important;
 }
+
+.green {
+  color: #43a047;
+}
+
+.yellow {
+  color: #fbc02d;
+}
+.red {
+  color: #e53935;
+}

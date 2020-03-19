@@ -26,9 +26,7 @@ export default class CommentList extends React.Component {
           <Grid item key={comment.id}>
             <Card>
               <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                  {comment.author}
-                </Typography>
+                <Typography gutterBottom>{comment.author}</Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {comment.text}
                 </Typography>
