@@ -20,13 +20,88 @@ class TicketDetailsContainer extends React.Component {
     this.setState({ ...this.state, editMode: true });
   };
 
+  fraudRiskCalculation = () => {
+    const ticket = this.props.ticket;
+    const event = this.props.event;
+
+    const calculateAuthorRisk = () => {
+      const authorTicketsAmount = event.tickets.filter(
+        ticketItem =>
+          ticketItem.author.toLowerCase() === ticket.author.toLowerCase()
+      ).length;
+
+      let authorRisk = authorTicketsAmount <= 1 ? 10 : 0;
+      return authorRisk;
+    };
+
+    const calculateAveragePrice = () => {
+      const averagePrice =
+        event.tickets.reduce((totalPrice, currentTicket) => {
+          return totalPrice + currentTicket.price;
+        }, 0) / event.tickets.length;
+      return averagePrice;
+    };
+
+    const calculatePriceRisk = () => {
+      let priceRisk = null;
+      if (ticket.price < calculateAveragePrice()) {
+        priceRisk =
+          (calculateAveragePrice() - ticket.price) /
+          (calculateAveragePrice() / 100);
+      } else if (ticket.price > calculateAveragePrice()) {
+        priceRisk =
+          -(ticket.price - calculateAveragePrice()) /
+          (calculateAveragePrice() / 100);
+        if (priceRisk < -10) {
+          priceRisk = -10;
+        }
+      }
+      return priceRisk;
+    };
+
+    const calculateCommentRisk = () => {
+      let commentRisk = ticket.comments.length > 3 ? 5 : 0;
+      return commentRisk;
+    };
+
+    const calculateTimeRisk = () => {
+      const date = new Date(ticket.updatedAt);
+      const time = date.getHours();
+      let timeRisk = time >= 9 || time <= 17 ? -10 : 10;
+      return timeRisk;
+    };
+
+    const calculateFraudRisk = () => {
+      console.log("averagePrice", calculateAveragePrice());
+
+      console.log("authorRisk", calculateAuthorRisk());
+      console.log("priceRisk", calculatePriceRisk());
+      console.log("commentRisk", calculateCommentRisk());
+      console.log("timeRisk", calculateTimeRisk());
+
+      let riskTotal =
+        calculateAuthorRisk() +
+        calculatePriceRisk() +
+        calculateCommentRisk() +
+        calculateTimeRisk();
+
+      const fraudRisk = riskTotal < 5 ? 5 : riskTotal > 95 ? 95 : riskTotal;
+      return fraudRisk;
+    };
+
+    console.log("fraudRisk", calculateFraudRisk());
+  };
+
   render() {
     if (!this.props.ticket) {
-      return <div>Loading</div>;
+      return <div>Loading Ticket</div>;
+    } else if (!this.props.event) {
+      return <div>Loading Event</div>;
     } else if (
       !this.props.user ||
       this.props.user.name !== this.props.ticket.author.toLowerCase()
     ) {
+      this.fraudRiskCalculation();
       return (
         <div>
           <TicketDetails
