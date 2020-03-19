@@ -6,11 +6,21 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-// import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";
 
 export default class TicketDetails extends React.Component {
+  dateConverter = date => {
+    const dateObject = new Date(date);
+    const dateString =
+      dateObject.getDate() +
+      "-" +
+      (dateObject.getMonth() + 1) +
+      "-" +
+      dateObject.getFullYear();
+    return dateString;
+  };
+
   render() {
     const ticket = this.props.ticket;
     const event = this.props.event;
@@ -43,7 +53,10 @@ export default class TicketDetails extends React.Component {
           </Grid>
           <Grid item>
             <Card>
-              <CardHeader title={event.name} subheader={event.startDate} />
+              <CardHeader
+                title={event.name}
+                subheader={this.dateConverter(event.startDate)}
+              />
               <CardMedia image={ticket.picture} title="Awesome" />
               <CardContent>
                 <Typography color="textSecondary" gutterBottom>
