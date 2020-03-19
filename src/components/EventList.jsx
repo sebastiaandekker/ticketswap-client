@@ -10,6 +10,17 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 
 export default class EventList extends React.Component {
+  dateConverter = date => {
+    const dateObject = new Date(date);
+    const dateString =
+      dateObject.getDate() +
+      "-" +
+      (dateObject.getMonth() + 1) +
+      "-" +
+      dateObject.getFullYear();
+    return dateString;
+  };
+
   render() {
     const events = this.props.events;
 
@@ -23,7 +34,10 @@ export default class EventList extends React.Component {
         {events.map(event => (
           <Grid item key={event.id}>
             <Card>
-              <CardHeader title={event.name} subheader={event.startDate} />
+              <CardHeader
+                title={event.name}
+                subheader={this.dateConverter(event.startDate)}
+              />
               <CardMedia image={event.picture} title="Contemplative Reptile" />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
