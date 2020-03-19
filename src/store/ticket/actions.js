@@ -36,3 +36,23 @@ export const updateTicket = ticket => (dispatch, getState) => {
     })
     .catch(console.error);
 };
+
+function addComment(payload) {
+  return {
+    type: "ADD_COMMENT",
+    payload
+  };
+}
+
+export const createComment = comment => (dispatch, getState) => {
+  const state = getState();
+  const { user } = state;
+  request
+    .post(`${baseUrl}/comment`)
+    .set("Authorization", `Bearer ${user.jwt}`)
+    .send(comment)
+    .then(response => {
+      dispatch(addComment(response.body));
+    })
+    .catch(console.error);
+};

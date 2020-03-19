@@ -1,7 +1,7 @@
 import React from "react";
 import CommentForm from "./CommentForm";
 import { connect } from "react-redux";
-// import { createComment } from "../store/comment/actions";
+import { createComment } from "../store/ticket/actions";
 
 class CommentFormContainer extends React.Component {
   state = {
@@ -10,7 +10,9 @@ class CommentFormContainer extends React.Component {
 
   onSubmit = comment => {
     comment.preventDefault();
-    this.props.createComment(this.state);
+    const commentData = { ...this.state, ticketId: this.props.ticket.id };
+    // const commentData = { ...this.state, ticketId: 5 };
+    this.props.createComment(commentData);
     this.setState({
       text: ""
     });
@@ -40,5 +42,6 @@ const mapStateToProps = state => {
   };
 };
 
-// export default connect(mapStateToProps, { createComment })(CommentFormContainer);
-export default connect(mapStateToProps)(CommentFormContainer);
+export default connect(mapStateToProps, { createComment })(
+  CommentFormContainer
+);

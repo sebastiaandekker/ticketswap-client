@@ -8,6 +8,9 @@ export default function ticketReducer(state = initialState, action) {
     case "TICKET_UPDATED": {
       return (state = action.payload);
     }
+    case "ADD_COMMENT": {
+      return { ...state, comments: [...state.comments, action.payload] };
+    }
     default: {
       return state;
     }
