@@ -99,7 +99,8 @@ class TicketDetailsContainer extends React.Component {
       return <div>Loading Event</div>;
     } else if (
       !this.props.user ||
-      this.props.user.name !== this.props.ticket.author.toLowerCase()
+      this.props.user.name.toLowerCase() !==
+        this.props.ticket.author.toLowerCase()
     ) {
       return (
         <div>
