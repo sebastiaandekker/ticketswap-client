@@ -87,7 +87,7 @@ with a title, picture, price and description
 +++ As an author of the ticket I want to be able to edit a ticket's description, price and picture 
 (other logged in customers cannot do this! only the user that created the ticket can edit it)
 +++ As a logged in customer I want to be able to create events with a name, picture (logo), date and description
---- As a customer I can see some color (red/yellow/green) indicating the fraud risk of a ticket 
++++ As a customer I can see some color (red/yellow/green) indicating the fraud risk of a ticket 
 for all tickets in the all tickets list
 
 ## Tools and technology

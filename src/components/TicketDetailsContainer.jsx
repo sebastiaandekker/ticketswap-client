@@ -72,23 +72,16 @@ class TicketDetailsContainer extends React.Component {
     };
 
     const calculateFraudRisk = () => {
-      // console.log("averagePrice", calculateAveragePrice());
-      // console.log("authorRisk", calculateAuthorRisk());
-      console.log("priceRisk", calculatePriceRisk());
-      // console.log("commentRisk", calculateCommentRisk());
-      // console.log("timeRisk", calculateTimeRisk());
       let riskTotal =
         calculateAuthorRisk() +
         calculatePriceRisk() +
         calculateCommentRisk() +
         calculateTimeRisk();
-      console.log("riskTotal", riskTotal);
 
       const fraudRisk = riskTotal < 5 ? 5 : riskTotal > 95 ? 95 : riskTotal;
       return Math.round(fraudRisk);
     };
 
-    console.log("fraudRisk", calculateFraudRisk());
     return calculateFraudRisk();
   };
 
