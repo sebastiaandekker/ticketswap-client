@@ -5,14 +5,33 @@ import EventList from "./EventList";
 import EventFormContainer from "./EventFormContainer";
 
 class EventListContainer extends React.Component {
+  state = {
+    currentPage: 2,
+    eventsPerPage: 8
+  };
+
   componentDidMount() {
     this.props.getEvents();
   }
+
+  pagination = () => {};
 
   render() {
     const eventsFiltered = this.props.events
       .filter(event => new Date() < new Date(event.startDate))
       .sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
+    const { currentPage, eventsPerPage } = this.state;
+
+    const indexOfLastEvent = currentPage * eventsPerPage;
+    const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+    const currentEvents = eventsFiltered.slice(
+      indexOfFirstEvent,
+      indexOfLastEvent
+    );
+
+    console.log("currentEvents", currentEvents);
+
     if (!this.props.user) {
       return (
         <div>
