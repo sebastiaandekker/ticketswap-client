@@ -42,7 +42,7 @@ export default class SignupForm extends React.Component {
           </Grid>
           <Grid item>
             <Button variant="contained" color="primary" type="submit">
-              Login
+              Signup
             </Button>
           </Grid>
         </form>
